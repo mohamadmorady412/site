@@ -1,0 +1,103 @@
+    
+    
+
+var site_86510247 = window.location.href;
+var needpop_655ef6af85470 = 1;
+var vc_cn = "rb_86510247";
+var vc_url_655ef6af85470 = "http://ketabkhone.rzb.ir/check/popup/d867c868cd14e985d28a2b3cedd580cf/73723655ef6af85458781881023068656940/"+site_86510247;
+if (readCookie(vc_cn)) {
+    needpop_655ef6af85470 = 0;
+} else {
+    needpop_655ef6af85470 = 1;
+}
+var multijobpoptimes = "12";
+var PopWidth = screen.width;
+var PopHeight = screen.height;
+var PopTargetingMethod = 100;
+var PopUseDivLayer = 1;
+var RTSDomain = vc_url_655ef6af85470;
+var debugDomain = vc_url_655ef6af85470;
+var Page_Popped = false;
+var Page2_Popped = false;
+var Page_Loaded = false;
+var Page_Enter;
+var MySiteDomain = window.location.href.split('/');
+if (needpop_655ef6af85470 == 1) {
+    InitPop()
+}
+
+function InitPop() {
+    Page_Enter = new Date();
+    if (window.captureEvents) {
+        window.captureEvents(Event.CLICK);
+        window.onclick = LoadStandardPop
+    } else document.onclick = LoadStandardPop
+}
+
+
+
+function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (multijobpoptimes * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString()
+    } else var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var ca = document.cookie.split(';');
+    var nameEQ = name + "=";
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length)
+    }
+    return null
+}
+
+function RetrieveCount() {
+    var cookieName = vc_cn;
+    var popSuccesses = readCookie(cookieName);
+    if (popSuccesses != null) popSuccesses = parseInt(popSuccesses);
+    else popSuccesses = 0;
+    return popSuccesses
+}
+
+function IncrementCount() {
+    var cookieName = vc_cn;
+    var popSuccesses = readCookie(cookieName);
+    if (popSuccesses != null) createCookie(cookieName, parseInt(popSuccesses) + 1, 1);
+    else createCookie(cookieName, 1, 1)
+}
+
+function LoadStandardPop() {
+    if (Page_Popped == true) return;
+    var pLoaded = false;
+    if (window.SymRealWinOpen) {
+        open = SymRealWinOpen
+    }
+    if (window.NS_ActualOpen) {
+        open = NS_ActualOpen
+    }
+    var pxLeft = 0;
+    var pxTop = 0;
+    if (screen.width > 0 && screen.height > 0) {
+        pxLeft = (screen.width / 2) - (PopWidth / 2);
+        pxTop = (screen.height / 2) - (PopHeight / 2) - 50;
+        if (pxLeft < 0) pxLeft = 0;
+        if (pxTop < 0) pxTop = 0
+    }
+    pLoaded = open(vc_url_655ef6af85470, '', 'toolbar=1,scrollbars=1,location=1,statusbar=1,men  ubar=1,resizable=1,top=' + pxTop + ',left=' + pxLeft + ',width=' + PopWidth + ',height=' + PopHeight);
+    if (pLoaded) {
+        Page_Popped = true;
+        IncrementCount()
+    } else {
+        Page_Popped = true;
+        if (Page_Loaded) initAdLayer();
+        else XBrowserAddHandlerPops(window, "load", "initAdLayer")
+    }
+    window.focus()
+}    
+  
+var Query_Time = '0.03 - 2 - 140236 - 1402247'
